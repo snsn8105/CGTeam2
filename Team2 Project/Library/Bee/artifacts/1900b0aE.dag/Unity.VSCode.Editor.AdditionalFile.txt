@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 C:\Users\박재홍\OneDrive\바탕 화면\CGTeam2\Team2 Project
+=======
+C:\Work\GitHub\CGTeam2\Team2 Project
+>>>>>>> 63fc455ee9796c4f1245756f1454660ecfd3044a
