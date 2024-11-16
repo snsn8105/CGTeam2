@@ -12,17 +12,17 @@ namespace NavKeypad
         [SerializeField] private UnityEvent onAccessGranted;
         [SerializeField] private UnityEvent onAccessDenied;
         [Header("Combination Code (9 Numbers Max)")]
-        [SerializeField] private int keypadCombo = 12345;
+        [SerializeField] private int keypadCombo = 1593; // 비밀번호 설정
 
         public UnityEvent OnAccessGranted => onAccessGranted;
         public UnityEvent OnAccessDenied => onAccessDenied;
 
         [Header("Settings")]
         [SerializeField] private string accessGrantedText = "Granted";
-        [SerializeField] private string accessDeniedText = "Denied";
+        [SerializeField] private string accessDeniedText = "Error!!";  // 잘못된 비밀번호 입력시 표시할 텍스트
 
         [Header("Visuals")]
-        [SerializeField] private float displayResultTime = 1f;
+        [SerializeField] private float displayResultTime = 3f; // 잘못된 비밀번호 일떄 표시 시간
         [Range(0, 5)]
         [SerializeField] private float screenIntensity = 2.5f;
         [Header("Colors")]
@@ -38,6 +38,9 @@ namespace NavKeypad
         [SerializeField] private TMP_Text keypadDisplayText;
         [SerializeField] private AudioSource audioSource;
 
+        [Header("Doors")]
+        [SerializeField] private Transform doorD_V2_left;  // Left Door
+        [SerializeField] private Transform doorD_V2_right; // Right Door
 
         private string currentInput;
         private bool displayingResult = false;
@@ -50,7 +53,7 @@ namespace NavKeypad
         }
 
 
-        //Gets value from pressedbutton
+        // 버튼을 눌렀을때 호출하는 함수
         public void AddInput(string input)
         {
             audioSource.PlayOneShot(buttonClickedSfx);
@@ -71,7 +74,7 @@ namespace NavKeypad
             }
 
         }
-        public void CheckCombo()
+        public void CheckCombo() // 입력된 비밀번호가 올바른지 확인하는 함수
         {
             if (int.TryParse(currentInput, out var currentKombo))
             {
@@ -118,13 +121,24 @@ namespace NavKeypad
             keypadDisplayText.text = currentInput;
         }
 
-        private void AccessGranted()
+       private void AccessGranted()
         {
             accessWasGranted = true;
             keypadDisplayText.text = accessGrantedText;
             onAccessGranted?.Invoke();
             panelMesh.material.SetVector("_EmissionColor", screenGrantedColor * screenIntensity);
             audioSource.PlayOneShot(accessGrantedSfx);
+
+            // 문을 열기 위한 회전 설정
+            if (doorD_V2_left != null)
+            {
+                doorD_V2_left.localRotation = Quaternion.Euler(0, 270, 0); // Left Door 270도 회전
+            }
+
+            if (doorD_V2_right != null)
+            {
+                doorD_V2_right.localRotation = Quaternion.Euler(0, 90, 0); // Right Door 90도 회전
+            }
         }
 
     }
