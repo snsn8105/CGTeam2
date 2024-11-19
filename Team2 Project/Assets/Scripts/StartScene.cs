@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class StartScene : MonoBehaviour
 {
     public void StartBtn(){
-        LoadingSceneController.Instance.LoadScene("Show");
+        LoadingSceneController.Instance.LoadScene("1");
         
     }
 }
