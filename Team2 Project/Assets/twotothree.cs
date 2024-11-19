@@ -6,7 +6,8 @@ public class twotothree : MonoBehaviour
 {
     public void GameScenesCtrls()
     {
-        SceneManager.LoadScene("Show");
+        LoadingSceneController.Instance.LoadScene("Show");
+
         Debug.Log("Game Scenes Go");
     }
 }
