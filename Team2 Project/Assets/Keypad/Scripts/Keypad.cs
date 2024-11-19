@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -127,5 +127,51 @@ namespace NavKeypad
             audioSource.PlayOneShot(accessGrantedSfx);
         }
 
+    }
+} */
+using UnityEngine;
+using TMPro;
+
+public class Keypad : MonoBehaviour
+{
+    [Header("Keypad Settings")]
+    public string correctPassword = "1593"; // 정답 비밀번호
+    private string currentInput = "";       // 현재 입력된 비밀번호
+    public TMP_Text displayText;            // 입력값 표시 TextMeshPro
+
+    [Header("Door Controller")]
+    public DoorController doorController;  // 문 회전 컨트롤러
+
+    public void AddInput(string input)
+    {
+        if (input == "enter")
+        {
+            CheckPassword(); // 비밀번호 확인
+        }
+        else
+        {
+            currentInput += input;
+            UpdateDisplay();
+        }
+    }
+
+    private void UpdateDisplay()
+    {
+        displayText.text = currentInput;
+    }
+
+    private void CheckPassword()
+    {
+        if (currentInput == correctPassword)
+        {
+            Debug.Log("Access Granted!");
+            doorController.OpenDoors(); // 문 열기
+        }
+        else
+        {
+            Debug.Log("Access Denied!");
+            currentInput = ""; // 입력값 초기화
+            UpdateDisplay();
+        }
     }
 }
