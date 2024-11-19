@@ -1,27 +1,25 @@
 using UnityEngine;
-
 public class KeypadInteraction : MonoBehaviour
 {
-    [Header("References")]
-    public GameObject keypadUI;         // 확대된 키패드 UI(Canvas)
-    public Transform player;            // 플레이어 Transform
-    public GameObject pressButtonUI;    // "Press the button (G)" UI
-    public float interactionDistance = 10.0f; // 상호작용 가능한 거리
-    public KeyCode interactionKey = KeyCode.G; // 키패드 활성화 키
+    public GameObject keypadUI;
+    public Transform player;
+    public GameObject pressButtonUI;
+    public float interactionDistance = 10.0f;
+    public KeyCode interactionKey = KeyCode.G;
 
     private bool isKeypadActive = false;
+    public playermovement playerController; // 플레이어 제어 스크립트 참조
+    public cameramove playerController2;
 
     void Update()
     {
-        // 키패드와 플레이어 거리 확인
         float distance = Vector3.Distance(player.position, transform.position);
 
-        if (distance <= interactionDistance)
+        if (distance <= interactionDistance && !isKeypadActive)// 중복 활성화 방지
         {
-            // "Press the button (G)" 표시
             pressButtonUI.SetActive(true);
 
-            if (Input.GetKeyDown(interactionKey))
+            if (Input.GetKeyDown(interactionKey)) 
             {
                 ActivateKeypadUI();
             }
@@ -30,25 +28,54 @@ public class KeypadInteraction : MonoBehaviour
         {
             pressButtonUI.SetActive(false);
         }
+        
     }
+
 
     private void ActivateKeypadUI()
     {
-        Debug.Log("Keypad UI Activated"); // 확인용 디버그 메시지
+        Debug.Log("Keypad UI Activated");
         isKeypadActive = true;
-        keypadUI.SetActive(true);       // 키패드 UI 활성화
-        pressButtonUI.SetActive(false); // "Press the button" 숨김
+        keypadUI.SetActive(true);
+        pressButtonUI.SetActive(false);
 
-        Cursor.lockState = CursorLockMode.None; // 마우스 커서 활성화
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        // 플레이어 컨트롤 비활성화
+        if (playerController != null)
+        {
+            playerController.enabled = false;
+        }
+                // 플레이어 컨트롤 비활성화
+        if (playerController2 != null)
+        {
+            playerController2.enabled = false;
+        }
     }
 
     public void DeactivateKeypadUI()
     {
+        Debug.Log("Keypad UI Deactivated");
+        keypadUI.SetActive(false);
         isKeypadActive = false;
-        keypadUI.SetActive(false);      // 키패드 UI 숨김
 
-        Cursor.lockState = CursorLockMode.Locked; // 마우스 커서 비활성화
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        // 플레이어 컨트롤 활성화
+        if (playerController != null)
+        {
+            playerController.enabled = true;
+        }
+        if (playerController2 != null)
+        {
+            playerController2.enabled = true; // 카메라 컨트롤 활성화
+        }
+    }
+
+    public void OnCloseButtonPressed()
+    {
+        DeactivateKeypadUI();
     }
 }
