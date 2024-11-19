@@ -16,13 +16,22 @@ namespace NavKeypad
 
 
         public void PressButton()
-        {
-            if (!moving)
-            {
-                keypad.AddInput(value);
-                StartCoroutine(MoveSmooth());
-            }
-        }
+{
+    Debug.Log($"Button {value} Pressed!"); // 이 메시지가 Console에 출력되는지 확인
+    if (keypad == null)
+    {
+        Debug.LogError("Keypad reference is missing on this button!");
+        return;
+    }
+
+    if (!moving)
+    {
+        keypad.AddInput(value);
+        StartCoroutine(MoveSmooth());
+    }
+}
+
+
         private bool moving;
 
         private IEnumerator MoveSmooth()
