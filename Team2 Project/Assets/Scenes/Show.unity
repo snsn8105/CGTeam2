@@ -1575,7 +1575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f664f9a675c7ff4689df5ab3302c58a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctPassword: 1593
+  correctPassword: 1953
   displayText: {fileID: 923015658}
   doorController: {fileID: 1453670053}
   doorController1: {fileID: 1771727061}
@@ -5216,7 +5216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f664f9a675c7ff4689df5ab3302c58a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctPassword: 1593
+  correctPassword: 1953
   displayText: {fileID: 2009244732}
   doorController: {fileID: 1453670053}
   doorController1: {fileID: 1771727061}
@@ -5235,7 +5235,7 @@ MonoBehaviour:
   keypadUI: {fileID: 966378003}
   player: {fileID: 1514838998}
   pressButtonUI: {fileID: 1283003538}
-  interactionDistance: 10
+  interactionDistance: 1.5
   interactionKey: 103
   playerController: {fileID: 1514839001}
   playerController2: {fileID: 1168061051}
@@ -8654,7 +8654,7 @@ MonoBehaviour:
   doorRight: {fileID: 608260972}
   rotationSpeed: 2
   leftDoorTargetY: 270
-  rightDoorTargetY: 90
+  rightDoorTargetY: -90
 --- !u!1 &1469065971
 GameObject:
   m_ObjectHideFlags: 0
@@ -10532,7 +10532,7 @@ MonoBehaviour:
   doorRight: {fileID: 608260972}
   rotationSpeed: 2
   leftDoorTargetY: 270
-  rightDoorTargetY: 90
+  rightDoorTargetY: -90
 --- !u!1 &1775987464
 GameObject:
   m_ObjectHideFlags: 0

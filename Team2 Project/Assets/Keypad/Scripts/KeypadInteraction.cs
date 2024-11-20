@@ -4,7 +4,7 @@ public class KeypadInteraction : MonoBehaviour
     public GameObject keypadUI;
     public Transform player;
     public GameObject pressButtonUI;
-    public float interactionDistance = 10.0f;
+    public float interactionDistance = 1.5f;
     public KeyCode interactionKey = KeyCode.G;
 
     private bool isKeypadActive = false;
