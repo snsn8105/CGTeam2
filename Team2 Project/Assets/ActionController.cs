@@ -57,7 +57,8 @@ public class ActionController : MonoBehaviour
         var itemPickUp = hitInfo.transform.GetComponent<ItemPickUp>();
         if (itemPickUp != null)
         {
-            actionText.text = itemPickUp.item.itemName + " Get " + "<color=yellow>(E)</color>";
+            actionText.text = "ITEM GET " + "<color=yellow>(E)</color>";
+            //actionText.text = itemPickUp.item.itemName + " Get " + "<color=yellow>(E)</color>";
         }
     }
 
