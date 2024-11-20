@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 618688d79bb4f3541829b17c4099fe96, type: 3}
-  m_Name: Map
+  m_Name: Fuel
   m_EditorClassIdentifier: 
-  itemName: Map
+  itemName: Fuel Tank
   itemType: 0
-  itemImage: {fileID: 21300000, guid: 13504c00eb5029f409ce14c7985032c9, type: 3}
-  itemPrefab: {fileID: 8901351522083404087, guid: d5962cbe8bb692b4988e3710062cc8e4, type: 3}
+  itemImage: {fileID: 21300000, guid: a8bca3c2aa51eb547823d86da61060e6, type: 3}
+  itemPrefab: {fileID: 1215395421967941289, guid: 3028bdafdc13c1c4a911990395bbbce8, type: 3}
   weaponType: 
