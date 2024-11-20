@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: Map
   m_EditorClassIdentifier: 
   itemName: Map
-  itemType: 0
   itemImage: {fileID: 21300000, guid: 13504c00eb5029f409ce14c7985032c9, type: 3}
-  itemPrefab: {fileID: 6796052033216743559, guid: ab50b86d40f7ac741803ee3ef6d1eaf0, type: 3}
-  weaponType: none
+  itemPrefab: {fileID: 8143399402100139635, guid: be090042b7086934f9fb12d10572cfdf, type: 3}
