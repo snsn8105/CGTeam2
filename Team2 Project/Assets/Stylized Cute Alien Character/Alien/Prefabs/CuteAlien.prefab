@@ -792,7 +792,7 @@ Transform:
   m_LocalRotation: {x: -0.5088422, y: -0.3313304, z: 0.7263718, w: 0.32199988}
   m_LocalPosition: {x: 0.023328375, y: 3.6942694, z: 0.12710004}
   m_LocalScale: {x: 43.928707, y: 32.79833, z: 50.04441}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6064476555349323563}
   m_RootOrder: 4
@@ -1191,7 +1191,7 @@ Animator:
     'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftHand'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform
     'mixamorig:Spine1'\n\tTransform 'mixamorig:Spine2'\n\tTransform 'mixamorig:RightUpLeg'\n\tTransform
     'mixamorig:RightForeArm'\n\tTransform 'mixamorig:LeftUpLeg'\n\tand more ...\n\tFrom
-    animation clip 'mixamo.com (1)'"
+    animation clip 'mixamo.com'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
