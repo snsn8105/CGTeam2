@@ -8,7 +8,7 @@ public class DoorController4 : MonoBehaviour
 
     [Header("Rotation Settings")]
     public float rotationSpeed = 2f; // 문 회전 속도
-    public float leftDoorTargetY = 450f; // 왼쪽 문 목표 Y 회전값
+    public float leftDoorTargetY = 90f; // 왼쪽 문 목표 Y 회전값
 
     private bool doorsOpened = false; // 문이 열렸는지 여부 확인
 
