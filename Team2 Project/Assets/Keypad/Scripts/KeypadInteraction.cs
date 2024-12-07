@@ -6,7 +6,6 @@ public class KeypadInteraction : MonoBehaviour
     public GameObject pressButtonUI;
     public float interactionDistance = 1.5f;
     public KeyCode interactionKey = KeyCode.G;
-
     private bool isKeypadActive = false;
     public playermovement playerController; // 플레이어 제어 스크립트 참조
     public cameramove playerController2;

@@ -3,49 +3,97 @@ using UnityEngine.UI;  // UI 관련 클래스 사용
 
 public class CubeInteraction : MonoBehaviour
 {
-    public GameObject uiPanel;  // UI Panel GameObject (비활성화된 상태로 시작)
-    public GameObject quizText;       // QUIZ TEXT1 UI Text 요소
-    public Transform player;    // 플레이어 오브젝트 (또는 사용자 캐릭터)
+    public GameObject uiPanel;        // UI Panel GameObject
+    public GameObject pressButtonUI; // "Press [Key]" UI Text 요소
+    public Transform player;          // 플레이어 오브젝트 (또는 사용자 캐릭터)
+    private bool isUIVisible = false; // UI 활성화 상태
+    public float interactionDistance = 1.5f; // UI를 활성화할 거리
+    public KeyCode interactionKey = KeyCode.E; // 상호작용 키
 
-    private bool isUIVisible = false;  // UI의 상태 (보임/숨김)
-    private float interactionDistance = 1.5f;  // UI를 활성화할 거리
-    public KeyCode interactionKey = KeyCode.E;  // 상호작용을 위한 키
+    public playermovement playerController; // 플레이어 컨트롤 스크립트 참조
+    public cameramove playerCameraController; // 카메라 컨트롤 스크립트 참조
 
     void Start()
     {
-        // UI 비활성화 (처음에는 보이지 않도록 설정)
-        uiPanel.SetActive(false);
-        quizText.gameObject.SetActive(false);  // QUIZ TEXT1 비활성화
+        // UI 초기화
+        uiPanel.SetActive(false);      // UI Panel 비활성화
+        pressButtonUI.SetActive(false); // "Press [Key]" UI 비활성화
     }
 
     void Update()
     {
-        // 큐브와 플레이어의 거리 계산
+        // 플레이어와 큐브 간 거리 계산
         float distance = Vector3.Distance(transform.position, player.position);
 
-        // 거리 조건이 충족되었을 때만 "E" 키 입력 감지
+        // 플레이어가 상호작용 거리 내에 있을 때
         if (distance <= interactionDistance)
         {
-            // 텍스트를 보여준다
-            quizText.gameObject.SetActive(true);
+            pressButtonUI.SetActive(!isUIVisible); // "Press [Key]" UI 표시 (UI가 보일 때는 숨김)
 
-            // "E" 버튼을 누르면 UI를 토글
-            if (Input.GetKeyDown(KeyCode.E))
+            // 상호작용 키 입력 시 UI 토글
+            if (Input.GetKeyDown(interactionKey))
             {
-                ToggleUI();
+                ToggleUIPanel();
             }
         }
         else
         {
-            // 일정 거리 이상일 경우 텍스트 숨기기
-            quizText.gameObject.SetActive(false);
+            pressButtonUI.SetActive(false); // 거리 벗어나면 UI 숨김
         }
     }
 
-    // UI를 토글하는 함수
-    void ToggleUI()
+    private void ToggleUIPanel()
     {
-        isUIVisible = !isUIVisible;  // UI 상태 변경
-        uiPanel.SetActive(isUIVisible);  // 상태에 맞게 UI 활성화/비활성화
+        if (isUIVisible)
+        {
+            DeactivateUIPanel();
+        }
+        else
+        {
+            ActivateUIPanel();
+        }
+    }
+
+    private void ActivateUIPanel()
+    {
+        Debug.Log("UI Panel Activated");
+        isUIVisible = true;
+        uiPanel.SetActive(true);        // UI Panel 활성화
+        pressButtonUI.SetActive(false); // "Press [Key]" UI 숨김
+
+        // 커서 잠금 해제 및 표시
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        // 플레이어 컨트롤 비활성화
+        if (playerController != null)
+        {
+            playerController.enabled = false;
+        }
+        if (playerCameraController != null)
+        {
+            playerCameraController.enabled = false;
+        }
+    }
+
+    private void DeactivateUIPanel()
+    {
+        Debug.Log("UI Panel Deactivated");
+        isUIVisible = false;
+        uiPanel.SetActive(false); // UI Panel 비활성화
+
+        // 커서 잠금 설정 및 숨김
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        // 플레이어 컨트롤 활성화
+        if (playerController != null)
+        {
+            playerController.enabled = true;
+        }
+        if (playerCameraController != null)
+        {
+            playerCameraController.enabled = true;
+        }
     }
 }

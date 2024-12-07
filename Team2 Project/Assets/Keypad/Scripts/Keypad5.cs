@@ -1,16 +1,17 @@
+
 using UnityEngine;
 using TMPro;
 
-public class Keypad2 : MonoBehaviour
+public class Keypad5 : MonoBehaviour
 {
     [Header("Keypad Settings")]
-    public string correctPassword = "3297"; // 정답 비밀번호
+    public string correctPassword = "0475"; // 정답 비밀번호
     private string currentInput = "";       // 현재 입력된 비밀번호
     public TMP_Text displayText;            // 입력값 표시 TextMeshPro
 
     [Header("Door Controller")]
-    public DoorController2 doorController;  // 문 회전 컨트롤러
-    public DoorController2 doorController1;  // 문 회전 컨트롤러
+    public DoorController5 doorController;  // 문 회전 컨트롤러
+
    public void AddInput(string input)
 {
     if (input == "enter")
@@ -40,7 +41,6 @@ public class Keypad2 : MonoBehaviour
         Debug.Log("Access Granted!");
         displayText.text = "ACCESS GRANTED"; // 성공 메시지 표시
         doorController.OpenDoors(); // 문 열기
-        doorController1.OpenDoors(); // 문 열기
     }
     else
     {
