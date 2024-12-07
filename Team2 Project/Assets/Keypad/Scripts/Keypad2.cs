@@ -4,7 +4,7 @@ using TMPro;
 public class Keypad2 : MonoBehaviour
 {
     [Header("Keypad Settings")]
-    public string correctPassword = "3297"; // 정답 비밀번호
+    private string correctPassword = "3297"; // 정답 비밀번호
     private string currentInput = "";       // 현재 입력된 비밀번호
     public TMP_Text displayText;            // 입력값 표시 TextMeshPro
 
