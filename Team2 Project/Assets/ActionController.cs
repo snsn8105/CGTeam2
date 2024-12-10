@@ -20,6 +20,9 @@ public class ActionController : MonoBehaviour
     private TMP_Text actionText;  // 행동 안내 텍스트
 
     [SerializeField]
+    private TMP_Text itemPickedText;
+
+    [SerializeField]
     private Inventory theInventory;
 
     void Update()
@@ -34,11 +37,15 @@ public class ActionController : MonoBehaviour
         {
             CanPickUp();
         }
+
+        if (Input.GetKeyDown(KeyCode.F)) {
+            itemPickedText.gameObject.SetActive(false);
+        }
     }
 
     private void CheckItem()
     {
-        float sphereRadius = 0.7f;
+        float sphereRadius = 0.3f;
 
         if (Physics.SphereCast(transform.position, sphereRadius, transform.forward, out hitInfo, range, layerMask)) {
             if (hitInfo.transform != null && hitInfo.transform.CompareTag("Item")) {
@@ -89,10 +96,17 @@ public class ActionController : MonoBehaviour
                 var itemPickUp = hitInfo.transform.GetComponent<ItemPickUp>();
                 if (itemPickUp != null)
                 {
+                    itemPickedText.gameObject.SetActive(true);
+                    string message = itemPickUp.item.itemName switch
+                    {
+                        "Energy Cell" => itemPickedText.text = "[ <color=yellow>" + itemPickUp.item.itemName + "</color> ] 을 획득했다! \n\"엔진을 가동시키려면 2개가 필요해.\" \nF 를 눌러 닫기",
+                        "Fuel Tank" => itemPickedText.text = "[ <color=yellow>" + itemPickUp.item.itemName + "</color> ] 을 획득했다! \n\"이제 우주선을 출발시킬 수 있겠어.\" \nF 를 눌러 닫기",
+                        "Kit" => itemPickedText.text = "[ <color=yellow>" + itemPickUp.item.itemName + "</color> ] 을 획득했다! \n\"예상치 못한 부상에도 걱정없겠군.\" \nF 를 눌러 닫기",
+                        "Map" => itemPickedText.text = "[ <color=yellow>" + itemPickUp.item.itemName + "</color> ] 을 획득했다! \n\"집을 어떻게 찾아가야하나 걱정했는데.\" \nF 를 눌러 닫기"
+                    };
                     Debug.Log(itemPickUp.item.itemName + " Picked up.");
                     theInventory.AcquireItem(hitInfo.transform.GetComponent<ItemPickUp>().item);
                     Destroy(hitInfo.transform.gameObject);
-                    ItemInfoDisappear();
                 }
             }
         }
