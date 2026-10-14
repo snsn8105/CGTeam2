@@ -1,10 +1,19 @@
-# CGTeam2 · 3D 방탈출
+# Zelo, Way Back Home · 3D 방탈출
 > 제한 시간 안에 공간을 탐색하고 아이템과 퍼즐을 이용해 탈출하는 3D 게임.
 
 [Unity 프로젝트 보기](https://github.com/snsn8105/CGTeam2/tree/main/Team2%20Project)
 
 ## 플레이 영상 · 스크린샷
-추후 추가 예정입니다.
+[![플레이 미리보기](docs/media/preview.gif)](https://github.com/snsn8105/CGTeam2/blob/main/docs/media/gameplay.mp4)
+
+[전체 플레이 영상 · MP4](https://github.com/snsn8105/CGTeam2/blob/main/docs/media/gameplay.mp4) · [다운로드](https://github.com/snsn8105/CGTeam2/raw/refs/heads/main/docs/media/gameplay.mp4) · 1080p / 30fps
+
+<details>
+<summary>스크린샷 보기</summary>
+
+![게임플레이 화면](docs/media/screenshot.png)
+
+</details>
 
 ## 게임 소개
 3D 공간에서 단서를 찾고 아이템을 수집하며 비밀번호 퍼즐과 탈출 장치를 해결합니다. 제한 시간 안에 탈출 조건을 달성하면 성공하고, 시간이 소진되면 실패합니다.
@@ -14,7 +23,7 @@
 - 아이템 획득 및 인벤토리
 - 키패드 비밀번호 퍼즐과 문 상호작용
 - 에너지 셀·발사 장치를 이용한 탈출
-- 기본 15분 제한 시간과 성공·실패 결과 씬
+- 제한 시간과 성공·실패 결과 씬
 
 ## 개발 정보
 | 항목 | 내용 |
@@ -31,7 +40,8 @@
 | --- | --- |
 | W / A / S / D | 이동 |
 | Left Shift | 달리기 |
-| E | 아이템 획득 및 장치·문 상호작용 |
+| E | 아이템 획득 및 장치 상호작용 |
+| G | 키패드 및 문 상호작용 |
 | I | 인벤토리 열기·닫기 |
 | F | 아이템 안내 닫기 |
 
